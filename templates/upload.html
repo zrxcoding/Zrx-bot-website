@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Bot</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+            background: linear-gradient(135deg, #0a0f24, #101b3a, #16254a);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .box {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            width: 350px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            backdrop-filter: blur(8px);
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            background: #ffffff0d;
+            border: 1px solid #4c76ff;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            color: white;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4c76ff;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #345cff;
+        }
+        a {
+            display: block;
+            margin-top: 10px;
+            color: #4c76ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Upload bot.py</h2>
+
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="botfile" accept=".py" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+</html>
